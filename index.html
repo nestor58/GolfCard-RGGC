@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta de Golf</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="Imagen1.jpg" alt="Logo Golf Club">
+        </div>
+
+        <h1>Tarjeta de Golf</h1>
+
+        <form id="golfForm">
+            <div class="input-group">
+                <label for="jugador">Jugador:</label>
+                <input type="text" id="jugador" required>
+            </div>
+
+            <div class="input-group">
+                <label for="matricula">Matrícula:</label>
+                <input type="text" id="matricula" required>
+            </div>
+
+            <div class="input-group">
+                <label for="handicap">Handicap:</label>
+                <input type="number" id="handicap" required>
+            </div>
+
+            <div class="input-group">
+                <label for="teeSalida">Tee de Salida:</label>
+                <select id="teeSalida" required>
+                    <option value="azul">Azul</option>
+                    <option value="blanca">Blanca</option>
+                    <option value="roja">Roja</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" required>
+            </div>
+
+            <!-- Tabla de resultados -->
+            <table id="tarjetaGolf">
+                <thead>
+                    <tr>
+                        <th>Hoyo</th>
+                        <th>HCP</th>
+                        <th>Azul</th>
+                        <th>Blanca</th>
+                        <th>Roja</th>
+                        <th>Par</th>
+                        <th>Golpes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Generar las filas para los 18 hoyos -->
+                    <script>
+                        const hoyos = [
+                            { hoyo: 1, hcp: 17, azul: 495, blanca: 480, roja: 332, par: 5 },
+                            { hoyo: 2, hcp: 1, azul: 415, blanca: 406, roja: 423, par: 4 },
+                            { hoyo: 3, hcp: 7, azul: 547, blanca: 520, roja: 371, par: 5 },
+                            { hoyo: 4, hcp: 15, azul: 171, blanca: 162, roja: 103, par: 3 },
+                            { hoyo: 5, hcp: 3, azul: 396, blanca: 389, roja: 320, par: 4 },
+                            { hoyo: 6, hcp: 5, azul: 444, blanca: 404, roja: 369, par: 4 },
+                            { hoyo: 7, hcp: 9, azul: 396, blanca: 366, roja: 330, par: 4 },
+                            { hoyo: 8, hcp: 11, azul: 189, blanca: 170, roja: 150, par: 3 },
+                            { hoyo: 9, hcp: 13, azul: 397, blanca: 367, roja: 326, par: 4 },
+                            { hoyo: 10, hcp: 6, azul: 386, blanca: 360, roja: 343, par: 4 },
+                            { hoyo: 11, hcp: 2, azul: 398, blanca: 373, roja: 369, par: 4 },
+                            { hoyo: 12, hcp: 8, azul: 525, blanca: 503, roja: 454, par: 5 },
+                            { hoyo: 13, hcp: 16, azul: 171, blanca: 162, roja: 113, par: 3 },
+                            { hoyo: 14, hcp: 4, azul: 381, blanca: 375, roja: 366, par: 4 },
+                            { hoyo: 15, hcp: 18, azul: 495, blanca: 480, roja: 423, par: 5 },
+                            { hoyo: 16, hcp: 10, azul: 396, blanca: 366, roja: 331, par: 4 },
+                            { hoyo: 17, hcp: 12, azul: 189, blanca: 170, roja: 126, par: 3 },
+                            { hoyo: 18, hcp: 14, azul: 397, blanca: 367, roja: 332, par: 4 },
+                            // Agregar más hoyos hasta el 18...
+                        ];
+
+                        hoyos.forEach((hoyo, index) => {
+                            document.write(`
+                                <tr>
+                                    <td>${hoyo.hoyo}</td>
+                                    <td>${hoyo.hcp}</td>
+                                    <td class="azul">${hoyo.azul}</td>
+                                    <td class="blanca">${hoyo.blanca}</td>
+                                    <td class="roja">${hoyo.roja}</td>
+                                    <td>${hoyo.par}</td>
+                                    <td><input type="number" min="1" class="golpes" required></td>
+                                </tr>
+                            `);
+
+                            // Insertar una fila de subtotales después del hoyo 9
+                            if (index === 8) {
+                                document.write(`
+                                    <tr class="subtotal-ida">
+                                        <th colspan="2">IDA</th>
+                                        <th id="subtotalAzulIda">0</th>
+                                        <th id="subtotalBlancaIda">0</th>
+                                        <th id="subtotalRojaIda">0</th>
+                                        <th></th>
+                                        <th id="subtotalGolpesIda">0</th>
+                                    </tr>
+                                `);
+                            }
+                        });
+                    </script>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="2">VUELTA</th>
+                        <th id="totalAzulVuelta">0</th>
+                        <th id="totalBlancaVuelta">0</th>
+                        <th id="totalRojaVuelta">0</th>
+                        <th></th>
+                        <th id="totalGolpesVuelta">0</th>
+                    </tr>
+                    <!-- Nueva fila con el subtotal de la ida 
+                    <tr>
+                        <th colspan="2">Subtotal Idarepp (1-9)</th>
+                        <th id="subtotalAzulIda">0</th>
+                        <th id="subtotalBlancaIda">0</th>
+                        <th id="subtotalRojaIda">0</th>
+                        <th></th>
+                        <th id="subtotalGolpesIda">0</th>
+                    </tr>-->
+
+                    <!-- Fila de Total General -->
+                    <tr>
+                        <th colspan="2">GROSS</th>
+                        <th id="totalAzulGeneral">0</th>
+                        <th id="totalBlancaGeneral">0</th>
+                        <th id="totalRojaGeneral">0</th>
+                        <th></th>
+                        <th id="totalGolpesGeneral">0</th>
+                    </tr>
+
+                    <!-- Fila del Handicap 
+                    <tr>
+                        <th colspan="6">Handicap</th>
+                        <th id="handicapDisplay">0</th>
+                    </tr>
+                    -->
+
+
+
+                    <!-- Fila del Total Neto -->
+                    <tr>
+                        <th colspan="6">NETO</th>
+                        <th id="totalNeto">0</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <button type="submit">Cargar Ronda</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+const hoyos = [
+                            { hoyo: 1, hcp: 17, azul: 495, blanca: 480, roja: 332, par: 5 },
+                            { hoyo: 2, hcp: 1, azul: 415, blanca: 406, roja: 423, par: 4 },
+                            { hoyo: 3, hcp: 7, azul: 547, blanca: 520, roja: 371, par: 5 },
+                            { hoyo: 4, hcp: 15, azul: 171, blanca: 162, roja: 103, par: 3 },
+                            { hoyo: 5, hcp: 3, azul: 396, blanca: 389, roja: 320, par: 4 },
+                            { hoyo: 6, hcp: 5, azul: 444, blanca: 404, roja: 369, par: 4 },
+                            { hoyo: 7, hcp: 9, azul: 396, blanca: 366, roja: 330, par: 4 },
+                            { hoyo: 8, hcp: 11, azul: 189, blanca: 170, roja: 150, par: 3 },
+                            { hoyo: 9, hcp: 13, azul: 397, blanca: 367, roja: 326, par: 4 },
+                            { hoyo: 10, hcp: 6, azul: 386, blanca: 360, roja: 343, par: 4 },
+                            { hoyo: 11, hcp: 2, azul: 398, blanca: 373, roja: 369, par: 4 },
+                            { hoyo: 12, hcp: 8, azul: 525, blanca: 503, roja: 454, par: 5 },
+                            { hoyo: 13, hcp: 16, azul: 171, blanca: 162, roja: 113, par: 3 },
+                            { hoyo: 14, hcp: 4, azul: 381, blanca: 375, roja: 366, par: 4 },
+                            { hoyo: 15, hcp: 18, azul: 495, blanca: 480, roja: 423, par: 5 },
+                            { hoyo: 16, hcp: 10, azul: 396, blanca: 366, roja: 331, par: 4 },
+                            { hoyo: 17, hcp: 12, azul: 189, blanca: 170, roja: 126, par: 3 },
+                            { hoyo: 18, hcp: 14, azul: 397, blanca: 367, roja: 332, par: 4 },
+                            // Rellenar con los valores de los 18 hoyos. OJO: Chequear yardas de salidas rojas..
+                        ];
